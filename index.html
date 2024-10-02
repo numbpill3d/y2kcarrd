@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>✨ My Y2K Tumblr Paradise ✨</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Comic Neue', cursive;
+            background-color: #ffccff;
+            background-image: url('https://i.imgur.com/JZjQz6L.gif');
+            color: #ff00ff;
+            margin: 0;
+            padding: 20px;
+            cursor: url('https://i.imgur.com/G7wFZX0.gif'), auto;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 3px solid #ff00ff;
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 0 10px #ff00ff, 0 0 20px #00ffff;
+        }
+
+        h1, h2 {
+            text-align: center;
+            text-shadow: 2px 2px #00ffff;
+        }
+
+        .blink {
+            animation: blinker 1s linear infinite;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0; }
+        }
+
+        .profile-pic {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            border: 5px solid #ff00ff;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .section {
+            margin-bottom: 20px;
+            padding: 10px;
+            background-color: rgba(0, 255, 255, 0.1);
+            border: 1px dashed #ff00ff;
+        }
+
+        .likes-dislikes {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .likes, .dislikes {
+            width: 45%;
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li::before {
+            content: '💖 ';
+        }
+
+        .dislikes li::before {
+            content: '💔 ';
+        }
+
+        .links {
+            text-align: center;
+        }
+
+        .links a {
+            display: inline-block;
+            margin: 5px;
+            padding: 5px 10px;
+            background-color: #ff00ff;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: transform 0.3s ease;
+        }
+
+        .links a:hover {
+            transform: scale(1.1);
+        }
+
+        .glitter {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            background-image: url('https://i.imgur.com/I4kXDog.gif');
+            opacity: 0.3;
+            z-index: 1000;
+        }
+
+        .random-image {
+            max-width: 100%;
+            margin: 10px 0;
+            border: 2px solid #00ffff;
+        }
+
+        #hitCounter {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="glitter"></div>
+    <div class="container">
+        <h1 class="blink">✨ Welcome to My Cyber Realm ✨</h1>
+        <img src="https://via.placeholder.com/200x200.png?text=My+E-girl+Pic" alt="My E-girl Pic" class="profile-pic">
+        
+        <div class="section">
+            <h2>🌈 About Me 🌈</h2>
+            <ul id="aboutMe"></ul>
+        </div>
+
+        <img src="https://via.placeholder.com/400x200.png?text=Random+Aesthetic+Pic" alt="Random Pic" class="random-image">
+
+        <div class="section likes-dislikes">
+            <div class="likes">
+                <h2>💖 Likes 💖</h2>
+                <ul id="likes"></ul>
+            </div>
+            <div class="dislikes">
+                <h2>💔 Dislikes 💔</h2>
+                <ul id="dislikes"></ul>
+            </div>
+        </div>
+
+        <img src="https://via.placeholder.com/400x200.png?text=Another+Random+Pic" alt="Another Random Pic" class="random-image">
+
+        <div class="section">
+            <h2>🔗 My Links 🔗</h2>
+            <div id="links" class="links"></div>
+        </div>
+
+        <div id="hitCounter">Hit Counter: <span id="visitorCount">0</span></div>
+    </div>
+
+    <script>
+        const content = {
+            aboutMe: [
+                "✨ Cyber pixie dream girl",
+                "🎮 Gamer by night",
+                "🖤 Emo phase: permanent",
+                "🎨 Digital art enthusiast",
+                "🌙 Perpetually online"
+            ],
+            likes: [
+                "Pastel goth aesthetics",
+                "Anime marathons",
+                "Pixel art",
+                "Kawaii stickers",
+                "Vaporwave music"
+            ],
+            dislikes: [
+                "Normie culture",
+                "Early mornings",
+                "Small talk",
+                "Slow internet",
+                "Adulting"
+            ],
+            links: [
+                { name: "My Tumblr", url: "#" },
+                { name: "Instagram", url: "#" },
+                { name: "TikTok", url: "#" },
+                { name: "Spotify Playlists", url: "#" },
+                { name: "Discord Server", url: "#" }
+            ]
+        };
+
+        function populateList(id, items) {
+            const ul = document.getElementById(id);
+            items.forEach(item => {
+                const li = document.createElement('li');
+                li.textContent = item;
+                ul.appendChild(li);
+            });
+        }
+
+        function populateLinks() {
+            const linksDiv = document.getElementById('links');
+            content.links.forEach(link => {
+                const a = document.createElement('a');
+                a.href = link.url;
+                a.textContent = link.name;
+                linksDiv.appendChild(a);
+            });
+        }
+
+        populateList('aboutMe', content.aboutMe);
+        populateList('likes', content.likes);
+        populateList('dislikes', content.dislikes);
+        populateLinks();
+
+        // Simulated hit counter
+        let visitorCount = Math.floor(Math.random() * 10000) + 1000;
+        document.getElementById('visitorCount').textContent = visitorCount;
+        setInterval(() => {
+            visitorCount++;
+            document.getElementById('visitorCount').textContent = visitorCount;
+        }, 60000);
+    </script>
+</body>
+</html>
